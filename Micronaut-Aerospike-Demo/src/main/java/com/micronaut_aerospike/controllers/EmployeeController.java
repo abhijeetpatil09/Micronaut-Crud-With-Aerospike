@@ -7,11 +7,13 @@ import com.micronaut_aerospike.services.EmployeeService;
 import com.micronaut_aerospike.services.KafkaService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 @Controller("/employee")
+@Tag(name="Employee Api")
 public class EmployeeController {
 
     @Inject

@@ -6,12 +6,14 @@ import com.micronaut_aerospike.services.DepartmentService;
 import com.micronaut_aerospike.services.KafkaService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
 
 @Controller("/department")
+@Tag(name="Department Api")
 public class DepartmentController {
 
     @Inject
