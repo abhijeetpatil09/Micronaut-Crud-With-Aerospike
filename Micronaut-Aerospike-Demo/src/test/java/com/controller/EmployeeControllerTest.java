@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.micronaut_aerospike.controllers.EmployeeController;
+import com.micronaut_aerospike.entities.Department;
 import com.micronaut_aerospike.entities.Employee;
 import com.micronaut_aerospike.services.EmployeeServiceImpl;
 import io.micronaut.test.annotation.MockBean;
@@ -9,6 +10,7 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,8 +35,8 @@ class EmployeeControllerTest {
 
     @Test
     void addEmployee() {
-        Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
-
+        Department department = new Department(1, "Java");
+        Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
         when(employeeService.addEmployee(employee)).thenReturn("Employee created successfully");
 
         String result = employeeController.addEmployee(employee);
@@ -53,7 +55,9 @@ class EmployeeControllerTest {
 
     @Test
     void findById() {
-        Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
+        Department department = new Department(1, "Java");
+        Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
+        employee.setId(1);
 
         when(employeeService.findById(1)).thenReturn(employee);
 
@@ -64,7 +68,9 @@ class EmployeeControllerTest {
 
     @Test
     void deleteById() {
-        Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
+        Department department = new Department(1, "Java");
+        Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
+        employee.setId(1);
 
         when(employeeService.deleteById(1)).thenReturn("Employee deleted successfully");
 
@@ -75,9 +81,11 @@ class EmployeeControllerTest {
 
     @Test
     void update() {
-        Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
+        Department department = new Department(1, "Java");
 
-        Employee newEmp = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Aerospike");
+        Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
+        employee.setId(1);
+        Employee newEmp= new Employee("Abhijeet Patil", "abhi@gmail.com", 56356, new Date(), department);
 
         when(employeeService.update(employee,1)).thenReturn("Employee updated successfully");
 

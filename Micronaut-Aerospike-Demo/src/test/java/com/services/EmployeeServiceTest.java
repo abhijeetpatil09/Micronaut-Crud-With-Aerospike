@@ -1,5 +1,6 @@
 package com.services;
 
+import com.micronaut_aerospike.entities.Department;
 import com.micronaut_aerospike.entities.Employee;
 import com.micronaut_aerospike.repositories.EmployeeRepositoryImpl;
 import com.micronaut_aerospike.services.EmployeeService;
@@ -9,6 +10,7 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +42,8 @@ public class EmployeeServiceTest {
 
    @Test
     void addEmployee(){
-       Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
+       Department department = new Department(1, "Java");
+       Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
 
        when(employeeRepository.addEmployee(employee)).thenReturn("Employee created successfully");
 
@@ -51,8 +54,9 @@ public class EmployeeServiceTest {
    }
    @Test
     void findById(){
-       Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
-
+       Department department = new Department(1, "Java");
+       Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
+       employee.setId(1);
        when(employeeRepository.findById(1)).thenReturn(employee);
 
        Employee result = employeeService.findById(1);
@@ -61,8 +65,9 @@ public class EmployeeServiceTest {
    }
    @Test
     void deleteById(){
-       Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
-
+       Department department = new Department(1, "Java");
+       Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
+       employee.setId(1);
        when(employeeRepository.deleteById(1)).thenReturn("Employee deleted successfully");
 
        String result = employeeService.deleteById(1);
@@ -71,9 +76,12 @@ public class EmployeeServiceTest {
    }
    @Test
     void update(){
-       Employee employee = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Java");
 
-       Employee newEmp = new Employee(1, "Abhijeet", "abhi@gmail.com", 56324, "Aerospike");
+       Department department = new Department(1, "Java");
+
+       Employee employee = new Employee("Abhijeet", "abhi@gmail.com", 56356, new Date(), department);
+       employee.setId(1);
+       Employee newEmp= new Employee("Abhijeet Patil", "abhi@gmail.com", 56356, new Date(), department);
 
        when(employeeRepository.update(employee,1)).thenReturn("Employee updated successfully");
 

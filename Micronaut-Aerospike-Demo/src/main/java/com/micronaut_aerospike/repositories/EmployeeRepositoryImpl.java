@@ -4,6 +4,8 @@ import com.micronaut_aerospike.configuration.AeroMapperConfiguration;
 
 import com.micronaut_aerospike.entities.Employee;
 import jakarta.inject.Inject;
+
+import java.util.Date;
 import java.util.List;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository{
@@ -43,6 +45,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         emp.setName(employee.getName());
         emp.setEmail(employee.getEmail());
         emp.setSalary(employee.getSalary());
+        emp.setJoiningDate(employee.getJoiningDate());
         emp.setDepartment(employee.getDepartment());
         mapper.getMapper().save(emp);
 

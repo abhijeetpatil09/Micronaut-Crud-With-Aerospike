@@ -1,71 +1,97 @@
 package com.micronaut_aerospike.entities;
 
+import com.aerospike.mapper.annotations.AerospikeBin;
 import com.aerospike.mapper.annotations.AerospikeKey;
 import com.aerospike.mapper.annotations.AerospikeRecord;
+import com.aerospike.mapper.annotations.AerospikeReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.micronaut.data.annotation.DateCreated;
+import io.micronaut.data.annotation.GeneratedValue;
+
+import java.util.Date;
 
 @AerospikeRecord(namespace = "test",set = "Employee")
 public class Employee {
 
+    @AerospikeBin
     @AerospikeKey
+    @GeneratedValue(GeneratedValue.Type.AUTO)
     private int id;
 
+    @AerospikeBin
     private String name;
 
+    @AerospikeBin
     private String email;
 
+    @AerospikeBin
     private double salary;
 
-    private String department;
+    @AerospikeBin
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date joiningDate;
+
+    @AerospikeBin
+    @AerospikeReference
+    private Department department;
 
     public Employee() {
     }
 
-    public Employee(int id, String name, String email, double salary, String department) {
-        this.id = id;
+    public Employee(String name, String email, double salary, Date joiningDate, Department department) {
         this.name = name;
         this.email = email;
         this.salary = salary;
+        this.joiningDate = joiningDate;
         this.department = department;
     }
 
     public int getId() {
-
         return id;
     }
 
     public void setId(int id) {
-
         this.id = id;
     }
 
     public String getName() {
-
         return name;
     }
 
     public void setName(String name) {
-
         this.name = name;
     }
 
     public String getEmail() {
-
         return email;
     }
 
     public void setEmail(String email) {
-
         this.email = email;
     }
 
     public double getSalary() {
-
         return salary;
     }
 
     public void setSalary(double salary) {
-
         this.salary = salary;
+    }
+
+    public Date getJoiningDate() {
+        return this.joiningDate;
+    }
+
+    public void setJoiningDate(Date joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -75,17 +101,8 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", salary=" + salary +
-                ", department='" + department + '\'' +
+                ", joiningDate=" + joiningDate +
+                ", department=" + department +
                 '}';
-    }
-
-    public String getDepartment() {
-
-        return department;
-    }
-
-    public void setDepartment(String department) {
-
-        this.department = department;
     }
 }

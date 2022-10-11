@@ -2,8 +2,6 @@ package com.micronaut_aerospike.services;
 
 import com.micronaut_aerospike.entities.Employee;
 import jakarta.inject.Singleton;
-
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Singleton
