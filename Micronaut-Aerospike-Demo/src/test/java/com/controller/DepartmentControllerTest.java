@@ -1,5 +1,4 @@
 package com.controller;
-
 import com.micronaut_aerospike.controllers.DepartmentController;
 import com.micronaut_aerospike.entities.Department;
 import com.micronaut_aerospike.services.DeprtmentServiceImpl;
@@ -8,10 +7,8 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

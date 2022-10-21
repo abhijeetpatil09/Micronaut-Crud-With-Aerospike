@@ -35,9 +35,10 @@ public class EmployeeServiceTest {
 
         when(employeeRepository.getEmployees()).thenReturn(Stream.of(new Employee(),
                 new Employee(),
+                new Employee(),
                 new Employee()).collect(Collectors.toList()));
 
-        Assertions.assertEquals(3,employeeService.getEmployees().size());
+        Assertions.assertEquals(4,employeeService.getEmployees().size());
     }
 
    @Test

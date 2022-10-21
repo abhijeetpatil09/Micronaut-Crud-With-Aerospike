@@ -1,6 +1,5 @@
 package com.micronaut_aerospike.configuration;
 
-
 import com.aerospike.client.AerospikeClient;
 import com.aerospike.client.policy.ClientPolicy;
 import com.aerospike.mapper.tools.AeroMapper;
@@ -10,7 +9,6 @@ import jakarta.inject.Singleton;
 
 @Singleton
 public class AeroMapperConfiguration {
-
     @Inject
     AerospikeConfiguration aerospikeConfiguration;
 

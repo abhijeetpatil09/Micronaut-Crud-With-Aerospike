@@ -3,9 +3,11 @@ package com.micronaut_aerospike.controllers;
 import com.micronaut_aerospike.entities.Department;
 import com.micronaut_aerospike.services.DepartmentService;
 
-import com.micronaut_aerospike.services.KafkaService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.inject.Inject;
 
@@ -14,17 +16,16 @@ import java.util.List;
 
 @Controller("/department")
 @Tag(name="Department Api")
+@SecurityRequirement(name="Authorization")
+@Secured(SecurityRule.IS_AUTHENTICATED)
 public class DepartmentController {
 
     @Inject
     DepartmentService departmentService;
-//    @Inject
-//    KafkaService kafkaService;
 
     @Post(value = "/add")
     @Produces(MediaType.APPLICATION_JSON)
     public String addDepartment(@Body Department department) {
-        //kafkaService.insert(department);
         return departmentService.addDepartment(department);
     }
     @Get(value="/show")
@@ -42,7 +43,7 @@ public class DepartmentController {
     @Delete(value = "/delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteById(@PathVariable int id){
-       // kafkaService.delete(id);
+
         return  departmentService.deleteById(id);
     }
 
@@ -50,7 +51,6 @@ public class DepartmentController {
     @Produces(MediaType.APPLICATION_JSON)
     public String update(Department department, @PathVariable int id){
 
-      //  kafkaService.update(employee);
         return  departmentService.update(department, id);
     }
 }

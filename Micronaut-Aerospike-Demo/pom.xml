@@ -101,11 +101,20 @@
       <version>4.5.1</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>com.sun.mail</groupId>
-          <artifactId>javax.mail</artifactId>
-          <version>1.6.2</version>
-      </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.19.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.19.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.micronaut.email</groupId>
+      <artifactId>micronaut-email-javamail</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.swagger.core.v3</groupId>
       <artifactId>swagger-annotations</artifactId>
@@ -115,10 +124,29 @@
       <artifactId>micronaut-openapi</artifactId>
       <version>4.5.2</version>
     </dependency>
+    <dependency>
+      <groupId>io.micronaut.kafka</groupId>
+      <artifactId>micronaut-kafka</artifactId>
+      <version>4.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.micronaut</groupId>
+      <artifactId>micronaut-aop</artifactId>
+      <version>3.7.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.micronaut.security</groupId>
+      <artifactId>micronaut-security-session</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.micronaut.security</groupId>
+      <artifactId>micronaut-security-jwt</artifactId>
+  </dependency>
       <dependency>
-          <groupId>org.apache.kafka</groupId>
-          <artifactId>kafka-clients</artifactId>
-          <version>2.8.1</version>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.24</version>
       </dependency>
   </dependencies>
 
@@ -133,8 +161,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <!-- Uncomment to enable incremental compilation -->
-          <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
 
           <annotationProcessorPaths combine.children="append">
             <path>
@@ -142,15 +168,12 @@
               <artifactId>micronaut-http-validation</artifactId>
               <version>${micronaut.version}</version>
             </path>
-<!--            <annotationProcessorPaths>-->
-              <path>
+            <path>
                 <groupId>io.micronaut.openapi</groupId>
                 <artifactId>micronaut-openapi</artifactId>
                 <version>4.5.2</version>
               </path>
             </annotationProcessorPaths>
-<!--          </annotationProcessorPaths>-->
-
           <compilerArgs>
             <arg>-Amicronaut.processing.group=com.micronaut.aerospike</arg>
             <arg>-Amicronaut.processing.module=Micronaut-Aerospike-Demo</arg>

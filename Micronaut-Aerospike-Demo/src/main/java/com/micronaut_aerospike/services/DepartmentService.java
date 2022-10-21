@@ -7,13 +7,14 @@ import java.util.List;
 
 @Singleton
 public interface DepartmentService {
-    public String addDepartment(Department department);
 
-    public List<Department> getDepartments();
+    String addDepartment(Department department);
 
-    public Department findById(int id);
+    List<Department> getDepartments();
 
-    public String deleteById(int id);
+    Department findById(int id);
 
-    public String update(Department department, int id);
+    String deleteById(int id);
+
+    String update(Department department, int id);
 }

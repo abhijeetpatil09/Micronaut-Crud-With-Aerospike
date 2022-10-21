@@ -1,0 +1,23 @@
+16:24:31 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee Abhijeet Patil has been added
+16:24:31 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+16:27:06 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee Rohit Phargade has been added
+16:27:06 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+16:27:27 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee Ruturaj Vitekar has been added
+16:27:27 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+16:27:53 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee Jogindra Raut has been added
+16:27:53 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+16:28:30 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee Akshay Mittha has been added
+16:28:30 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+16:30:59 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee found by id: 5
+16:31:09 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee found by id: 4
+16:33:03 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee updated by id: 5  Updated details : Employee{id=5, name='Akshay Mittha', email='sample@mailinator.com', salary=35667.0, joiningDate=Sat Jan 08 05:34:00 IST 2022, department=Department{deptId=1, deptName='Java Developer'}}
+16:33:03 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+10:21:07 [main] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+10:21:15 [main] INFO  com.micronaut_aerospike.services.EmailServices - Email Send
+10:21:27 [main] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee updated by id: 1  Updated details : Employee{id=1, name='Abhijeet', email='abhi@gmail.com', salary=56356.0, joiningDate=Fri Oct 21 10:21:27 IST 2022, department=Department{deptId=1, deptName='Java'}}
+10:21:29 [main] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee found by id: 1
+10:21:29 [main] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee found by id: 1
+10:21:29 [main] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee Abhijeet has been added
+10:21:29 [main] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee deleted by id: 1
+10:24:40 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.controllers.EmployeeController - Employee sss Pansgggare has been added
+10:24:40 [default-nioEventLoopGroup-1-3] INFO  com.micronaut_aerospike.services.EmailServices - Email Send

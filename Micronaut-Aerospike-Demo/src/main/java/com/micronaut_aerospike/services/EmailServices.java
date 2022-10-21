@@ -1,46 +1,33 @@
 package com.micronaut_aerospike.services;
 
-import com.micronaut_aerospike.entities.EmailDetails;
+import io.micronaut.email.Email;
+import io.micronaut.email.EmailException;
+import io.micronaut.email.EmailSender;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Singleton
 public class EmailServices {
 
-    public static void sendEmail(EmailDetails emailDetails) {
+    @Inject
+    private EmailSender emailSender;
+    private static final Logger LOGGER = LogManager.getLogger(EmailServices.class.getName());
 
-        Properties properties = System.getProperties();
-
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        Session session = Session.getDefaultInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("abhipatil7038@gmail.com","vojbuukdqgwpdvop");
-            }
-        });
-
-        Message message = new MimeMessage(session);
-
+    public void sendMail(String to, String msg, String subject) {
+        if (LOGGER.isInfoEnabled())
+            LOGGER.info("Email Send");
         try {
-            message.setFrom(new InternetAddress("abhipatil7038@gmail.com"));
-            message.setSubject(emailDetails.getSubject());
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailDetails.getTo()));
-            message.setText(emailDetails.getMessage());
-
-            Transport.send(message);
-
+            Email.Builder email = Email.builder()
+                    .subject(subject)
+                    .to(to)
+                    .body(msg);
+            emailSender.send(email);
+        } catch (EmailException e) {
+            if (LOGGER.isErrorEnabled()) {
+                LOGGER.error("Email notification failed");
+            }
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 }

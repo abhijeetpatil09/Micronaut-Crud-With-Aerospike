@@ -7,13 +7,14 @@ import java.util.List;
 @Singleton
 public interface EmployeeService {
 
-    public String addEmployee(Employee employee);
 
-    public List<Employee> getEmployees();
+    String addEmployee(Employee employee);
 
-    public Employee findById(int id);
+    List<Employee> getEmployees();
 
-    public String deleteById(int id);
+    Employee findById(int id);
 
-    public String update(Employee employee, int id);
+    String deleteById(int id);
+
+    String update(Employee employee, int id);
 }
